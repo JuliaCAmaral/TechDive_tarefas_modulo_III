@@ -1,10 +1,20 @@
 package br.senai.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "CURSOS")
 public class Curso {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String codigo;
+
     private String assunto;
     private Integer duracao; //em dias
+
+    public Curso() {
+    }
 
     public String getCodigo() {
         return codigo;

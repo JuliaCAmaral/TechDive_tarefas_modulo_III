@@ -1,10 +1,23 @@
 package br.senai.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "INSCRICOES")
 public class Inscricao {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @ManyToOne
     private Aluno aluno;
+
+    @ManyToOne
     private Curso curso;
+
+    public Inscricao() {
+    }
 
     public Integer getId() {
         return id;

@@ -1,19 +1,29 @@
 package br.senai.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "CURSOS")
 public class Curso {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "COD_CURSO")
     private String codigo;
-
     private String assunto;
-    private Integer duracao; //em dias
+    private Integer duracao;
 
-    public Curso() {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Curso curso = (Curso) o;
+        return codigo.equals(curso.codigo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(codigo);
     }
 
     public String getCodigo() {

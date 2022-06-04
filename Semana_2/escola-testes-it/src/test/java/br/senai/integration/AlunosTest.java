@@ -5,10 +5,12 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.core.IsNull.notNullValue;
+import static org.hamcrest.Matchers.is;
 
 public class AlunosTest {
 
@@ -23,6 +25,7 @@ public class AlunosTest {
     }
 
     @Test
+    @Order(1)
     public void criarAluno() throws JsonProcessingException {
         AlunoPostDTO request = new AlunoPostDTO("nome");
         String json = mapper.writeValueAsString(request);
@@ -36,5 +39,16 @@ public class AlunosTest {
                 .body("matricula", notNullValue())
                 .extract()
                 .path("matricula");
+    }
+
+    @Test
+    @Order(2)
+    public void getAluno() {
+        given()
+                .when()
+                .get("/alunos/{matricula}", idAluno)
+                .then()
+                .statusCode(200)
+                .body("nome", is("nome"));
     }
 }

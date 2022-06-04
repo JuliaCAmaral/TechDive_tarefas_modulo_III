@@ -16,6 +16,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import javax.ws.rs.core.Response;
 
+import static br.senai.TestHelper.obterCursoDTO;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 
@@ -31,15 +32,15 @@ class CursosControllerTest {
     @Test
     @DisplayName("Quando curso existente. Deve lançar exceção")
     void inserir_falha() {
-        CursoDTO cursoDTO = TestHelper.obterCursoDTO();
-        Mockito.doThrow(new RegistroExistenteException("Curso", cursoDTO.getCodigo())).when(service).inserir(Mockito.any(Curso.class));
-        assertThrows(RegistroExistenteException.class, () -> controller.inserir(cursoDTO));
+        CursoDTO curso = obterCursoDTO();
+        Mockito.doThrow(new RegistroExistenteException("Curso", curso.getCodigo())).when(service).inserir(Mockito.any(Curso.class));
+        assertThrows(RegistroExistenteException.class, () -> controller.inserir(curso));
     }
 
     @Test
     @DisplayName("Quando curso não existente. Deve inserir com sucesso")
     void inserir_sucesso() {
-        CursoDTO cursoDTO = TestHelper.obterCursoDTO();
+        CursoDTO cursoDTO = obterCursoDTO();
         Response response = controller.inserir(cursoDTO);
         assertEquals(Response.Status.CREATED.getStatusCode(), response.getStatus());
         assertNotNull(response.getEntity());
@@ -54,7 +55,7 @@ class CursosControllerTest {
     }
 
     @Test
-    @DisplayName("Quando curso não existente. Deve lançar exceção")
+    @DisplayName("Quando curso existente. Deve retornar NO CONTENT")
     void remover_sucesso() {
         Response response = controller.remover("codigo");
         assertNotNull(response);

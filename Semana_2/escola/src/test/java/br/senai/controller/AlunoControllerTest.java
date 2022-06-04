@@ -1,6 +1,7 @@
 package br.senai.controller;
 
 import br.senai.dto.AlunoDTO;
+import br.senai.dto.AlunoPostDTO;
 import br.senai.exception.RegistroExistenteException;
 import br.senai.exception.RegistroNaoEncontradoException;
 import br.senai.model.Aluno;
@@ -16,6 +17,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import javax.ws.rs.core.Response;
 
 import static br.senai.TestHelper.obterAlunoDTO;
+import static br.senai.TestHelper.obterAlunoPostDTO;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -28,24 +30,6 @@ class AlunoControllerTest {
 
     @InjectMocks
     private AlunoController controller;
-
-    @Test
-    @DisplayName("Quando aluno existente. Deve lançar exceção")
-    void inserir_falha() {
-        AlunoDTO aluno = obterAlunoDTO();
-        Mockito.doThrow(new RegistroExistenteException("Aluno", aluno.getMatricula().toString())).when(service).inserir(Mockito.any(Aluno.class));
-        assertThrows(RegistroExistenteException.class, () -> controller.inserir(aluno));
-    }
-
-    @Test
-    @DisplayName("Quando aluno não existente. Deve inserir com sucesso")
-    void inserir_sucesso() {
-        AlunoDTO aluno = obterAlunoDTO();
-        Response response = controller.inserir(aluno);
-        assertEquals(Response.Status.CREATED.getStatusCode(), response.getStatus());
-        assertNotNull(response.getEntity());
-        assertInstanceOf(AlunoDTO.class, response.getEntity());
-    }
 
     @Test
     @DisplayName("Quando aluno não existente. Deve lançar exceção")

@@ -1,6 +1,7 @@
 package br.senai.controller;
 
 import br.senai.dto.AlunoDTO;
+import br.senai.dto.AlunoPostDTO;
 import br.senai.mapper.AlunoMapper;
 import br.senai.model.Aluno;
 import br.senai.service.AlunosService;
@@ -24,10 +25,10 @@ public class AlunoController extends Application {
     private AlunosService service;
 
     @POST
-    public Response inserir(@Valid AlunoDTO alunoDTO) {
+    public Response inserir(@Valid AlunoPostDTO alunoDTO) {
         Aluno aluno = AlunoMapper.INSTANCE.toModel(alunoDTO);
         service.inserir(aluno);
-        return Response.created(URI.create(aluno.getMatricula().toString())).entity(alunoDTO).build();
+        return Response.created(URI.create(aluno.getMatricula().toString())).entity(aluno).build();
     }
 
     @PUT

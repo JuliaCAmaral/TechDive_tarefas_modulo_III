@@ -1,0 +1,6 @@
+br/senai/service/CursosServiceTest.class
+br/senai/controller/AlunoControllerTest.class
+br/senai/service/AlunosServiceTest.class
+br/senai/TestHelper.class
+br/senai/controller/CursosControllerTest.class
+br/senai/service/InscricoesServiceTest.class

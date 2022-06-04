@@ -45,18 +45,9 @@ class AlunosServiceTest {
     }
 
     @Test
-    @DisplayName("Quando aluno existente. Deve lançar exceção.")
-    void inserir_falha() {
-        Aluno aluno = obterAluno();
-        Mockito.when(alunoDAO.find(anyInt())).thenReturn(Optional.of(aluno));
-        assertThrows(RegistroExistenteException.class, () -> service.inserir(aluno));
-    }
-
-    @Test
     @DisplayName("Quando aluno não existente. Deve inserir com sucesso")
     void inserir_sucesso() {
         Aluno aluno = obterAluno();
-        Mockito.when(alunoDAO.find(anyInt())).thenReturn(Optional.empty());
         Aluno result = service.inserir(aluno);
         assertNotNull(result);
         assertInstanceOf(Aluno.class, result);

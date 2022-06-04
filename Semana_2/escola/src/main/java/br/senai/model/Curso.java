@@ -10,6 +10,7 @@ public class Curso {
     @Id
     @Column(name = "COD_CURSO")
     private String codigo;
+
     private String assunto;
     private Integer duracao;
 

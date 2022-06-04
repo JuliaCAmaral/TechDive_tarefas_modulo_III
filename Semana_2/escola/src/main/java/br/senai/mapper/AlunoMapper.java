@@ -1,6 +1,7 @@
 package br.senai.mapper;
 
 import br.senai.dto.AlunoDTO;
+import br.senai.dto.AlunoPostDTO;
 import br.senai.model.Aluno;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -13,4 +14,6 @@ public interface AlunoMapper {
     AlunoDTO toDTO(Aluno model);
 
     Aluno toModel(AlunoDTO dto);
+
+    Aluno toModel(AlunoPostDTO dto);
 }

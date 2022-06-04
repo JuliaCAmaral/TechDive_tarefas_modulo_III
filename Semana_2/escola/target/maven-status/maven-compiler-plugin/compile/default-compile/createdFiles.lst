@@ -1,6 +1,7 @@
 br/senai/mapper/CursoMapperImpl.class
 br/senai/config/WebApplicationMapper.class
 br/senai/mapper/InscricaoMapper.class
+br/senai/dto/AlunoPostDTO.class
 br/senai/service/CursosService.class
 br/senai/mapper/AlunoMapperImpl.class
 br/senai/InscricoesApplication.class

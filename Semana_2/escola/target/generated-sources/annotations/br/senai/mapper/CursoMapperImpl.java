@@ -6,7 +6,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-06-04T15:41:35-0300",
+    date = "2022-06-04T20:15:48-0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 18 (Oracle Corporation)"
 )
 public class CursoMapperImpl implements CursoMapper {

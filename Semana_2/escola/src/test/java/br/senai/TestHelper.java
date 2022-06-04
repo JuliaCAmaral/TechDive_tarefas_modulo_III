@@ -1,6 +1,7 @@
 package br.senai;
 
 import br.senai.dto.AlunoDTO;
+import br.senai.dto.AlunoPostDTO;
 import br.senai.dto.CursoDTO;
 import br.senai.model.Aluno;
 import br.senai.model.Curso;
@@ -25,6 +26,10 @@ public class TestHelper {
 
     public static AlunoDTO obterAlunoDTO() {
         return new AlunoDTO(1, "nome");
+    }
+
+    public static AlunoPostDTO obterAlunoPostDTO() {
+        return new AlunoPostDTO("Felipe");
     }
 
     public static Inscricao obterInscricao() {

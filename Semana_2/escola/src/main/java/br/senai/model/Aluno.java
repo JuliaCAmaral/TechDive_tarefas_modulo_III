@@ -1,9 +1,6 @@
 package br.senai.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -11,16 +8,21 @@ import java.util.Objects;
 public class Aluno {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer matricula;
 
-    private String Nome;
+    private String nome;
 
     public Aluno() {
     }
 
     public Aluno(Integer matricula, String nome) {
         this.matricula = matricula;
-        Nome = nome;
+        this.nome = nome;
+    }
+
+    public Aluno(String nome) {
+        this.nome = nome;
     }
 
     @Override
@@ -45,10 +47,10 @@ public class Aluno {
     }
 
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
     public void setNome(String nome) {
-        Nome = nome;
+        this.nome = nome;
     }
 }

@@ -14,7 +14,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Path("/alunos")
+@Path("/cursos")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class CursosController {

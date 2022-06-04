@@ -10,14 +10,18 @@ public class AlunoDTO implements Serializable {
     private Integer matricula;
 
     @NotEmpty(message = "Campo obrigatório")
-    private String Nome;
+    private String nome;
 
     public AlunoDTO() {
     }
 
     public AlunoDTO(Integer matricula, String nome) {
         this.matricula = matricula;
-        Nome = nome;
+        this.nome = nome;
+    }
+
+    public AlunoDTO(String nome) {
+        this.nome = nome;
     }
 
     public Integer getMatricula() {
@@ -29,10 +33,10 @@ public class AlunoDTO implements Serializable {
     }
 
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
     public void setNome(String nome) {
-        Nome = nome;
+        this.nome = nome;
     }
 }

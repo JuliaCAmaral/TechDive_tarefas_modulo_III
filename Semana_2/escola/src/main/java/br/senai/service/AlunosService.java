@@ -1,7 +1,6 @@
 package br.senai.service;
 
 import br.senai.dao.AlunoDAO;
-import br.senai.exception.RegistroExistenteException;
 import br.senai.exception.RegistroNaoEncontradoException;
 import br.senai.model.Aluno;
 
@@ -18,9 +17,6 @@ public class AlunosService {
     private AlunoDAO alunosDAO;
 
     public Aluno inserir(Aluno aluno) {
-        boolean existente = alunosDAO.find(aluno.getMatricula()).isPresent();
-        if (existente)
-            throw new RegistroExistenteException("Aluno", aluno.getMatricula().toString());
         alunosDAO.save(aluno);
         return aluno;
     }

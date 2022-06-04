@@ -20,6 +20,12 @@ public class Inscricao {
     public Inscricao() {
     }
 
+    public Inscricao(Integer id, Aluno aluno, Curso curso) {
+        this.id = id;
+        this.aluno = aluno;
+        this.curso = curso;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

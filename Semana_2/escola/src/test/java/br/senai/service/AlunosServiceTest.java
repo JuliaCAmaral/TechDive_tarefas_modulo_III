@@ -31,7 +31,7 @@ class AlunosServiceTest {
     @DisplayName("Quando aluno não existente. Deve lançar exceção.")
     void obter_falha() {
         Mockito.when(alunoDAO.find(anyInt())).thenReturn(Optional.empty());
-        assertThrows(RegistroNaoEncontradoException.class, () -> service.obter(0));
+        assertThrows(RegistroNaoEncontradoException.class, () -> service.obter(1));
     }
 
     @Test

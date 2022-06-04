@@ -48,7 +48,7 @@ class CursosServiceTest {
 
     @Test
     @DisplayName("Quando curso já existente. Deve lançar exceção")
-    void inserirCurso_falha() {
+    void inserir_falha() {
         Curso curso = obterCurso();
         Mockito.when(cursosDAO.find(anyString())).thenReturn(Optional.of(curso));
         assertThrows(RegistroExistenteException.class, () -> service.inserir(curso));
@@ -56,7 +56,7 @@ class CursosServiceTest {
 
     @Test
     @DisplayName("Quando dados válidos. Deve gravar e retornar Curso")
-    void inserirCurso_sucesso() {
+    void inserir_sucesso() {
         Curso curso = obterCurso();
         Mockito.when(cursosDAO.find(anyString())).thenReturn(Optional.empty());
         Curso result = service.inserir(curso);

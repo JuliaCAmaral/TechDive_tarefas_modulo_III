@@ -4,14 +4,13 @@ import br.senai.dto.AlunoPostDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.http.ContentType;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.Matchers.is;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class AlunosTest {
 
     private ObjectMapper mapper = new ObjectMapper();
@@ -50,5 +49,15 @@ public class AlunosTest {
                 .then()
                 .statusCode(200)
                 .body("nome", is("nome"));
+    }
+
+    @Test
+    @Order(3)
+    public void deleteAluno() {
+        given()
+                .when()
+                .delete("/alunos/{matricula}", idAluno)
+                .then()
+                .statusCode(204);
     }
 }

@@ -17,11 +17,12 @@ public class AlunosService {
     @Inject
     private AlunoDAO alunosDAO;
 
-    public void inserir(Aluno aluno) {
+    public Aluno inserir(Aluno aluno) {
         boolean existente = alunosDAO.find(aluno.getMatricula()).isPresent();
         if (existente)
             throw new RegistroExistenteException("Aluno", aluno.getMatricula().toString());
         alunosDAO.save(aluno);
+        return aluno;
     }
 
     public void alterar(Aluno aluno) {

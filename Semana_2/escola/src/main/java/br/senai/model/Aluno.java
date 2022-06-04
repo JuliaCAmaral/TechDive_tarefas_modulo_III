@@ -15,6 +15,14 @@ public class Aluno {
 
     private String Nome;
 
+    public Aluno() {
+    }
+
+    public Aluno(Integer matricula, String nome) {
+        this.matricula = matricula;
+        Nome = nome;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

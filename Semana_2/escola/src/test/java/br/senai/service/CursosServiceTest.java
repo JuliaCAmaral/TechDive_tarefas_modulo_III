@@ -1,6 +1,5 @@
 package br.senai.service;
 
-import br.senai.TestHelper;
 import br.senai.dao.CursoDAO;
 import br.senai.exception.RegistroExistenteException;
 import br.senai.exception.RegistroNaoEncontradoException;

@@ -38,4 +38,14 @@ public class CursosTest {
                 .extract()
                 .path("codigo");
     }
+
+    @Test
+    @Order(2)
+    public void deletarCurso() {
+        given()
+                .when()
+                .delete("/cursos/{codigo}", codigo)
+                .then()
+                .statusCode(204);
+    }
 }
